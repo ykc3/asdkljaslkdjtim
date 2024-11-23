@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF--8">
+	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Skibidi Jonkler's Birthday</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			height: 100vh; /* Makes the body take the full height of the screen */
+			margin: 0; /* Removes default body margin */	
+			background-color: orange;
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		
+		h1 {
+			font-size: 2.5rem;
+			margin: 0.5rem;
+			margin-top: 2rem;
+			font-family: 'Lobster', cursive;
+			color: darkblue;
+		}
+		
+		p {
+			font-size: 1.2rem;
+			margin: 0.5rem;
+			margin-top: 0.5rem;
+			color: darkslategray;
+		}
+			 
+		img {
+			max-width: 40%;	
+			height: auto;
+			border-radius: 20px;
+			margin-top: 200px;
+			cursor: pointer; 
+		}
+		button {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 1rem;
+			background-color: darkblue;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: navy;
+		}
+		
+	</style>
+</head>
+<body>
+	<h1>HAPPY BIRTHDAY TIMOTHY WANG MY SKIBIDI SIGMA!</h1>
+	<p>I wish you a great day and I hope you like the very sigma game I bought you &lt;333. Much love, AND PLEASE MARRY ME.</p>
+	<img src="cake.png" alt="Birthday Celebration" id="center-image">
+	<audio id="birthday-audio" src="birthdayaudio.mp3"></audio>
+	<audio id="background-music" src="hawktuah.mp3" loop>
+		Your browser does not support the audio element.
+	</audio>
+	
+	<button id="play-music">Play Background Music</button>
+		
+	<script>
+
+		document.getElementById('play-music').addEventListener('click', () => {
+			const bgMusic = document.getElementById('background-music');
+			bgMusic.play();
+		});
+		
+		function launchConfetti() {
+			const confettiImage = document.createElement('img')
+			confettiImage.src = 'skibidi.png';
+			confettiImage.style.position = 'absolute';
+			confettiImage.style.left = Math.random() * 100 + 'vw';
+			confettiImage.style.top = '-10vh';
+			confettiImage.style.width = '50px';
+			confettiImage.style.height = '50px';
+			confettiImage.style.animation = 'fall 2s ease-out forwards';
+		
+			document.body.appendChild(confettiImage);
+		
+			setTimeout(() => confettiImage.remove(), 2000);
+		}
+		
+		const style = document.createElement('style');
+		style.textContent = `
+			@keyframes fall {
+				0% { transform: translateY(0); }
+				100% { transform: translateY(100vh); }
+			}
+		`;
+		document.head.appendChild(style);
+		
+		document.getElementById('center-image').addEventListener('click', () => {
+        
+			const audio = document.getElementById('birthday-audio');
+			audio.play();
+
+
+			for (let i = 0; i < 30; i++) {
+				setTimeout(launchConfetti, i * 50);
+			}
+		});
+	</script>
+</body>
+</html>
