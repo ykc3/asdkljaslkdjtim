@@ -40,6 +40,16 @@
 			margin-top: 200px;
 			cursor: pointer; 
 		}
+		
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(1080deg); /* 3 full spins */
+			}
+		}
+		
 		button {
 			margin-top: 20px;
 			padding: 10px 20px;
@@ -100,10 +110,15 @@
 		document.head.appendChild(style);
 		
 		document.getElementById('center-image').addEventListener('click', () => {
-        
+			const image = document.getElementById('center-image');
 			const audio = document.getElementById('birthday-audio');
 			audio.play();
+			
+			image.style.animation = 'spin 1s ease-in-out';
 
+			setTimeout(() => {
+				image.style.animation = '';
+			}, 1000);
 
 			for (let i = 0; i < 30; i++) {
 				setTimeout(launchConfetti, i * 50);
